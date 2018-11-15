@@ -44,4 +44,47 @@ class Policy_Header {
 		$this->policy  = $policy;
 		$this->origins = $origins;
 	}
+
+	/**
+	 * Sends the header.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return bool True on success, false on failure.
+	 */
+	public function send() {
+		if ( headers_sent() ) {
+			return false;
+		}
+
+		if ( empty( $this->origins ) ) {
+			return false;
+		}
+
+		$value = $this->get_value();
+
+		header( "Feature-Policy: {$value}", false );
+	}
+
+	/**
+	 * Gets the value for the header.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string Value for the HTTP header.
+	 */
+	protected function get_value() {
+		$value = $this->policy->name;
+
+		foreach ( $this->origins as $origin ) {
+			if ( Policy::ORIGIN_SELF === $origin || Policy::ORIGIN_NONE === $origin ) {
+				$value .= " '{$origin}'";
+				continue;
+			}
+
+			$value .= " {$origin}";
+		}
+
+		return $value;
+	}
 }

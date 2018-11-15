@@ -134,6 +134,7 @@ class Plugin {
 		}
 
 		static::$instance = new static( $main_file );
+		static::$instance->register();
 
 		return true;
 	}

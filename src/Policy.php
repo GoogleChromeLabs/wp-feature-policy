@@ -16,29 +16,25 @@ namespace Google\WP_Feature_Policy;
  */
 class Policy {
 
+	const ORIGIN_ANY  = '*';
+	const ORIGIN_SELF = 'self';
+	const ORIGIN_NONE = 'none';
+
 	/**
 	 * Feature policy name.
 	 *
 	 * @since 0.1.0
 	 * @var string
 	 */
-	public $name = '';
+	protected $name = '';
 
 	/**
-	 * User-facing feature policy title.
+	 * Feature policy arguments.
 	 *
 	 * @since 0.1.0
-	 * @var string
+	 * @var array
 	 */
-	public $title = '';
-
-	/**
-	 * Default origin for the feature policy.
-	 *
-	 * @since 0.1.0
-	 * @var string
-	 */
-	public $default_origin = '*';
+	protected $args = array();
 
 	/**
 	 * Constructor.
@@ -62,6 +58,42 @@ class Policy {
 	}
 
 	/**
+	 * Magic isset-er.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $prop Property to check for.
+	 * @return bool True if the property is set, false otherwise.
+	 */
+	public function __isset( $prop ) {
+		if ( 'name' === $prop ) {
+			return true;
+		}
+
+		return isset( $this->args[ $prop ] );
+	}
+
+	/**
+	 * Magic getter.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $prop Property to get.
+	 * @return mixed The property value, or null if property not set.
+	 */
+	public function __get( $prop ) {
+		if ( 'name' === $prop ) {
+			return $this->name;
+		}
+
+		if ( $this->args[ $prop ] ) {
+			return $this->args[ $prop ];
+		}
+
+		return null;
+	}
+
+	/**
 	 * Sets the feature policy arguments.
 	 *
 	 * @since 0.1.0
@@ -70,12 +102,12 @@ class Policy {
 	 *                    arguments.
 	 */
 	protected function set_args( array $args ) {
-		foreach ( $args as $key => $value ) {
-			if ( ! property_exists( $this, $key ) ) {
-				continue;
-			}
-
-			$this->$key = $value;
-		}
+		$this->args = wp_parse_args(
+			$args,
+			array(
+				'title'          => '',
+				'default_origin' => self::ORIGIN_ANY,
+			)
+		);
 	}
 }

@@ -22,32 +22,59 @@ class Policies {
 	 * @since 0.1.0
 	 */
 	public function register() {
-		// TODO: Add hooks to integrate with WordPress.
+		add_action(
+			'send_headers',
+			function() {
+				$headers = $this->get_policy_headers();
+				foreach ( $headers as $header ) {
+					$header->send();
+				}
+			}
+		);
 	}
 
-	public function get_policy_headers() {
-		$options = get_option( 'TODO' );
-		$policies = $this->get_policies();
-
-		$headers = array();
-		foreach ( $options as $policy_slug => $policy_origins ) {
-			$headers[] = new Policy_Header( $policies[ $policy_slug ], $policy_origins );
-		}
-
-		return $headers;
-	}
-
+	/**
+	 * Gets the available feature policies definitions.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return array Associative array of $policy_name => $policy_instance pairs.
+	 */
 	public function get_policies() {
 		$policies = array(
+			// TODO: Add all feature policies with their definitions.
 			'usb' => new Policy(
 				'usb',
 				array(
 					'title'          => __( 'USB', 'feature-policy' ),
-					'default_origin' => 'self',
+					'default_origin' => Policy::ORIGIN_SELF,
 				)
 			),
 		);
 
 		return $policies;
+	}
+
+	/**
+	 * Gets the headers for all enabled feature policies.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return array List of policy headers.
+	 */
+	protected function get_policy_headers() {
+		$options  = get_option( 'feature_policies', array() );
+		$policies = $this->get_policies();
+
+		$headers = array();
+		foreach ( $options as $policy_slug => $policy_origins ) {
+			if ( ! isset( $policies[ $policy_slug ] ) ) {
+				continue;
+			}
+
+			$headers[] = new Policy_Header( $policies[ $policy_slug ], $policy_origins );
+		}
+
+		return $headers;
 	}
 }
