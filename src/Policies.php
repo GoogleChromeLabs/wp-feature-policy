@@ -84,7 +84,7 @@ class Policies {
 	 * @return array List of policy headers.
 	 */
 	protected function get_policy_headers() {
-		$options  = get_option( self::OPTION_NAME );
+		$options  = array_filter( (array) get_option( self::OPTION_NAME, array() ) );
 		$policies = $this->get_policies();
 
 		$headers = array();
