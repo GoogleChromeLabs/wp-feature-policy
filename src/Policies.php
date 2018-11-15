@@ -19,6 +19,14 @@ class Policies {
 	const OPTION_NAME = 'feature_policies';
 
 	/**
+	 * Internal storage for lazy-loaded policies, also to prevent double initialization.
+	 *
+	 * @since 0.1.0
+	 * @var array
+	 */
+	protected $policies = array();
+
+	/**
 	 * Registers feature policies integration with WordPress.
 	 *
 	 * @since 0.1.0
@@ -43,9 +51,13 @@ class Policies {
 	 * @return array Associative array of $policy_name => $policy_instance pairs.
 	 */
 	public function get_policies() {
-		$policies = array(
+		if ( ! empty( $this->policies ) ) {
+			return $this->policies;
+		}
+
+		$this->policies = array(
 			// TODO: Add all feature policies with their definitions.
-			'usb' => new Policy(
+			'usb'           => new Policy(
 				'usb',
 				array(
 					'title'          => __( 'USB', 'feature-policy' ),
@@ -61,7 +73,7 @@ class Policies {
 			),
 		);
 
-		return $policies;
+		return $this->policies;
 	}
 
 	/**
