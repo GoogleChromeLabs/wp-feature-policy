@@ -15,7 +15,7 @@
  * Author URI:  https://opensource.google.com/
  * License:     GNU General Public License v2 (or later)
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wp-feature-policy
+ * Text Domain: feature-policy
  * Tags:        feature, policy
  */
 
@@ -56,7 +56,7 @@ function _wp_feature_policy_display_php_version_notice() {
 			<?php
 			sprintf(
 				/* translators: 1: required version, 2: currently used version */
-				__( 'Feature Policy requires at least PHP version %1$s. Your site is currently running on PHP %2$s.', 'wp-feature-policy' ),
+				__( 'Feature Policy requires at least PHP version %1$s. Your site is currently running on PHP %2$s.', 'feature-policy' ),
 				'5.6',
 				phpversion()
 			);
@@ -78,7 +78,7 @@ function _wp_feature_policy_display_wp_version_notice() {
 			<?php
 			sprintf(
 				/* translators: 1: required version, 2: currently used version */
-				__( 'Feature Policy requires at least WordPress version %1$s. Your site is currently running on WordPress %2$s.', 'wp-feature-policy' ),
+				__( 'Feature Policy requires at least WordPress version %1$s. Your site is currently running on WordPress %2$s.', 'feature-policy' ),
 				'4.7',
 				get_bloginfo( 'version' )
 			);

@@ -59,7 +59,7 @@ if ( ! file_exists( $test_root . '/includes/phpunit6-compat.php' ) && class_exis
 
 // Ensure the plugin is loaded.
 $GLOBALS['wp_tests_options'] = array(
-	'active_plugins' => array( 'wp-feature-policy/wp-feature-policy.php' ),
+	'active_plugins' => array( 'feature-policy/feature-policy.php' ),
 );
 
 // Load the WordPress tests environment.

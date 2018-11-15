@@ -31,7 +31,7 @@ After that we will review the pull-request as soon as possible and either merge 
 
 When providing translations...
 
-* visit our project on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-feature-policy) and sign in with your wordpress.org account (create one if you haven't yet)
+* visit our project on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/feature-policy) and sign in with your wordpress.org account (create one if you haven't yet)
 * select the language you would like to contribute to
 * provide the missing translations
     * make sure you follow the guidelines outlined in the [Translator Handbook](https://make.wordpress.org/polyglots/handbook/translating/expectations/)

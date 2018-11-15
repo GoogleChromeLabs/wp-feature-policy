@@ -2,7 +2,7 @@
 <ruleset name="WordPress Plugin">
     <description>Ruleset for a WordPress plugin.</description>
 
-    <file>./wp-feature-policy.php</file>
+    <file>./feature-policy.php</file>
     <file>./src</file>
 
     <exclude-pattern type="relative">^/vendor/*</exclude-pattern>
@@ -19,7 +19,7 @@
     <!-- Selected WordPress Coding Standards tweaks -->
     <rule ref="WordPress.WP.I18n">
         <properties>
-            <property name="text_domain" type="string" value="wp-feature-policy"/>
+            <property name="text_domain" type="string" value="feature-policy"/>
         </properties>
     </rule>
 </ruleset>
