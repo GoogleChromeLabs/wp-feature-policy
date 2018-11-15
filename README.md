@@ -18,3 +18,9 @@ WordPress plugin for managing feature policy headers.
 ## Contributing
 
 Any kind of contributions to Feature Policy are welcome. Please [read the contributing guidelines](https://github.com/westonruter/wp-feature-policy/blob/master/CONTRIBUTING.md) to get started.
+
+## Further Resources
+
+* [https://developers.google.com/web/updates/2018/06/feature-policy](https://developers.google.com/web/updates/2018/06/feature-policy)
+* [https://wicg.github.io/feature-policy/](https://wicg.github.io/feature-policy/)
+* [https://github.com/WICG/feature-policy](https://github.com/WICG/feature-policy)
