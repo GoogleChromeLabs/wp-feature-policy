@@ -24,5 +24,6 @@ Any kind of contributions to Feature Policy are welcome. Please [read the contri
 * [https://featurepolicy.rocks/](https://featurepolicy.rocks/)
 * [https://developers.google.com/web/updates/2018/06/feature-policy](https://developers.google.com/web/updates/2018/06/feature-policy)
 * [https://developers.google.com/web/updates/2018/09/reportingapi](https://developers.google.com/web/updates/2018/09/reportingapi)
+* [https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy)
 * [https://wicg.github.io/feature-policy/](https://wicg.github.io/feature-policy/)
 * [https://github.com/WICG/feature-policy](https://github.com/WICG/feature-policy)
