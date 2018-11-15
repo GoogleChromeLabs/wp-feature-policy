@@ -4,7 +4,7 @@
  *
  * @package Google\WP_Feature_Policy
  * @license GNU General Public License, version 2
- * @link    https://wordpress.org/plugins/wp-feature-policy/
+ * @link    https://wordpress.org/plugins/feature-policy/
  */
 
 namespace Google\WP_Feature_Policy\Admin;

@@ -8,7 +8,7 @@
     "feature",
     "policy"
   ],
-  "homepage": "https://wordpress.org/plugins/wp-feature-policy/",
+  "homepage": "https://wordpress.org/plugins/feature-policy/",
   "authors": [
     {
       "name": "Google",
@@ -42,12 +42,6 @@
     "brain/monkey": "^2"
   },
   "scripts": {
-    "post-install-cmd": [
-      "\"vendor/bin/mozart\" compose"
-    ],
-    "post-update-cmd": [
-      "\"vendor/bin/mozart\" compose"
-    ],
     "phplint": "find -L .  -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
     "phpcs": "@php ./vendor/bin/phpcs",
     "phpmd": "@php ./vendor/bin/phpmd src text phpmd.xml.dist",

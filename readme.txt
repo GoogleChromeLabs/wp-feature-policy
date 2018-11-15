@@ -1,7 +1,7 @@
-=== WP Feature Policy ===
+=== Feature Policy ===
 
-Plugin Name:       WP Feature Policy
-Plugin URI:        https://wordpress.org/plugins/wp-feature-policy/
+Plugin Name:       Feature Policy
+Plugin URI:        https://wordpress.org/plugins/feature-policy/
 Author:            Google
 Author URI:        https://opensource.google.com/
 Contributors:      google, westonruter, flixos90

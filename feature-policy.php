@@ -4,11 +4,11 @@
  *
  * @package Google\WP_Feature_Policy
  * @license GNU General Public License, version 2
- * @link    https://wordpress.org/plugins/wp-feature-policy/
+ * @link    https://wordpress.org/plugins/feature-policy/
  *
  * @wordpress-plugin
- * Plugin Name: WP Feature Policy
- * Plugin URI:  https://wordpress.org/plugins/wp-feature-policy/
+ * Plugin Name: Feature Policy
+ * Plugin URI:  https://wordpress.org/plugins/feature-policy/
  * Description: WordPress plugin for managing feature policy headers.
  * Version:     0.1.0
  * Author:      Google
@@ -26,14 +26,14 @@
  *
  * @since 0.1.0
  */
-function wp_feature_policy_load() {
+function _wp_feature_policy_load() {
 	if ( version_compare( phpversion(), '5.6', '<' ) ) {
-		add_action( 'admin_notices', 'wp_feature_policy_display_php_version_notice' );
+		add_action( 'admin_notices', '_wp_feature_policy_display_php_version_notice' );
 		return;
 	}
 
 	if ( version_compare( get_bloginfo( 'version' ), '4.7', '<' ) ) {
-		add_action( 'admin_notices', 'wp_feature_policy_display_wp_version_notice' );
+		add_action( 'admin_notices', '_wp_feature_policy_display_wp_version_notice' );
 		return;
 	}
 
@@ -49,14 +49,14 @@ function wp_feature_policy_load() {
  *
  * @since 0.1.0
  */
-function wp_feature_policy_display_php_version_notice() {
+function _wp_feature_policy_display_php_version_notice() {
 	?>
 	<div class="notice notice-error">
 		<p>
 			<?php
 			sprintf(
 				/* translators: 1: required version, 2: currently used version */
-				__( 'WP Feature Policy requires at least PHP version %1$s. Your site is currently running on PHP %2$s.', 'wp-feature-policy' ),
+				__( 'Feature Policy requires at least PHP version %1$s. Your site is currently running on PHP %2$s.', 'wp-feature-policy' ),
 				'5.6',
 				phpversion()
 			);
@@ -71,14 +71,14 @@ function wp_feature_policy_display_php_version_notice() {
  *
  * @since 0.1.0
  */
-function wp_feature_policy_display_wp_version_notice() {
+function _wp_feature_policy_display_wp_version_notice() {
 	?>
 	<div class="notice notice-error">
 		<p>
 			<?php
 			sprintf(
 				/* translators: 1: required version, 2: currently used version */
-				__( 'WP Feature Policy requires at least WordPress version %1$s. Your site is currently running on WordPress %2$s.', 'wp-feature-policy' ),
+				__( 'Feature Policy requires at least WordPress version %1$s. Your site is currently running on WordPress %2$s.', 'wp-feature-policy' ),
 				'4.7',
 				get_bloginfo( 'version' )
 			);
@@ -88,4 +88,4 @@ function wp_feature_policy_display_wp_version_notice() {
 	<?php
 }
 
-wp_feature_policy_load();
+_wp_feature_policy_load();

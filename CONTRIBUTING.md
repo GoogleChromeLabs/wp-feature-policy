@@ -1,4 +1,4 @@
-# Contribute to WP Feature Policy
+# Contribute to Feature Policy
 
 Bug reports, patches, translations and any kind of contributions are very welcome. When contributing, please ensure you stick to the following guidelines.
 
