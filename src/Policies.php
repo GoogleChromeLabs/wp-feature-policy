@@ -24,4 +24,30 @@ class Policies {
 	public function register() {
 		// TODO: Add hooks to integrate with WordPress.
 	}
+
+	public function get_policy_headers() {
+		$options = get_option( 'TODO' );
+		$policies = $this->get_policies();
+
+		$headers = array();
+		foreach ( $options as $policy_slug => $policy_origins ) {
+			$headers[] = new Policy_Header( $policies[ $policy_slug ], $policy_origins );
+		}
+
+		return $headers;
+	}
+
+	public function get_policies() {
+		$policies = array(
+			'usb' => new Policy(
+				'usb',
+				array(
+					'title'          => __( 'USB', 'feature-policy' ),
+					'default_origin' => 'self',
+				)
+			),
+		);
+
+		return $policies;
+	}
 }
