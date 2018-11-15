@@ -61,7 +61,7 @@ class Plugin {
 		$this->main_file = $main_file;
 
 		$this->policies     = new Policies();
-		$this->admin_screen = new Screen();
+		$this->admin_screen = new Screen( $this->policies );
 	}
 
 	/**

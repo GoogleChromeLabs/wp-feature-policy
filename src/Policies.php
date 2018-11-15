@@ -16,6 +16,8 @@ namespace Google\WP_Feature_Policy;
  */
 class Policies {
 
+	const OPTION_NAME = 'feature_policies';
+
 	/**
 	 * Registers feature policies integration with WordPress.
 	 *
@@ -50,6 +52,13 @@ class Policies {
 					'default_origin' => Policy::ORIGIN_SELF,
 				)
 			),
+			'unsized-media' => new Policy(
+				'unsized-media',
+				array(
+					'title'          => __( 'Unsized Media', 'feature-policy' ),
+					'default_origin' => Policy::ORIGIN_ANY,
+				)
+			),
 		);
 
 		return $policies;
@@ -63,7 +72,7 @@ class Policies {
 	 * @return array List of policy headers.
 	 */
 	protected function get_policy_headers() {
-		$options  = get_option( 'feature_policies', array() );
+		$options  = get_option( self::OPTION_NAME );
 		$policies = $this->get_policies();
 
 		$headers = array();
