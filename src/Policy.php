@@ -86,7 +86,7 @@ class Policy {
 			return $this->name;
 		}
 
-		if ( $this->args[ $prop ] ) {
+		if ( isset( $this->args[ $prop ] ) ) {
 			return $this->args[ $prop ];
 		}
 
