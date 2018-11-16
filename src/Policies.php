@@ -171,6 +171,10 @@ class Policies {
 				'title'          => __( 'Unoptimized Images', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
+			'unsized-media'        => array(
+				'title'          => __( 'Unsized Media', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
 			'usb'                  =>
 			array(
 				'title'          => __( 'USB', 'feature-policy' ),
