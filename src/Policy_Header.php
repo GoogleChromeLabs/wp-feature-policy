@@ -57,11 +57,10 @@ class Policy_Header {
 			return false;
 		}
 
-		if ( empty( $this->origins ) ) {
+		$value = $this->get_value();
+		if ( empty( $this->origins ) || array( $this->policy->default_origin ) === $this->origins ) {
 			return false;
 		}
-
-		$value = $this->get_value();
 
 		header( "Feature-Policy: {$value}", false );
 	}
