@@ -55,23 +55,146 @@ class Policies {
 			return $this->policies;
 		}
 
-		$this->policies = array(
-			// TODO: Add all feature policies with their definitions.
-			'usb'           => new Policy(
-				'usb',
-				array(
-					'title'          => __( 'USB', 'feature-policy' ),
-					'default_origin' => Policy::ORIGIN_SELF,
-				)
+		$policies = array(
+			'accelerometer'        =>
+			array(
+				'title'          => __( 'Accelerometer', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'unsized-media' => new Policy(
-				'unsized-media',
-				array(
-					'title'          => __( 'Unsized Media', 'feature-policy' ),
-					'default_origin' => Policy::ORIGIN_ANY,
-				)
+			'ambient-light-sensor' =>
+			array(
+				'title'          => __( 'Ambient Light Sensor', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'autoplay'             =>
+			array(
+				'title'          => __( 'Autoplay', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'camera'               =>
+			array(
+				'title'          => __( 'Camera', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'document-domain'      =>
+			array(
+				'title'          => __( 'document.domain', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'document-write'       =>
+			array(
+				'title'          => __( 'document.write()', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'encrypted-media'      =>
+			array(
+				'title'          => __( 'Encrypted Media', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'fullscreen'           =>
+			array(
+				'title'          => __( 'Fullscreen', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'geolocation'          =>
+			array(
+				'title'          => __( 'Geolocation', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'gyroscope'            =>
+			array(
+				'title'          => __( 'Gyroscope', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'layout-animations'    =>
+			array(
+				'title'          => __( 'Layout Animations', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'lazyload'             =>
+			array(
+				'title'          => __( 'Lazy Loading', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'legacy-image-formats' =>
+			array(
+				'title'          => __( 'Legacy Image Formats', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'magnetometer'         =>
+			array(
+				'title'          => __( 'Magnetometer', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'microphone'           =>
+			array(
+				'title'          => __( 'Microphone', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'midi'                 =>
+			array(
+				'title'          => __( 'Midi', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'oversized-images'     =>
+			array(
+				'title'          => __( 'Oversized Images', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'payment'              =>
+			array(
+				'title'          => __( 'Payment', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'picture-in-picture'   =>
+			array(
+				'title'          => __( 'Picture-in-Picture', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'speaker'              =>
+			array(
+				'title'          => __( 'Speaker', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
+			),
+			'sync-script'          =>
+			array(
+				'title'          => __( 'Synchronous Scripts', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'sync-xhr'             =>
+			array(
+				'title'          => __( 'Synchronous XHR', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'unoptimized-images'   =>
+			array(
+				'title'          => __( 'Unoptimized Images', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'usb'                  =>
+			array(
+				'title'          => __( 'USB', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'vertical-scroll'      =>
+			array(
+				'title'          => __( 'Vertical Scroll', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_ANY,
+			),
+			'vr'                   =>
+			array(
+				'title'          => __( 'VR', 'feature-policy' ),
+				'default_origin' => Policy::ORIGIN_SELF,
 			),
 		);
+
+		$this->policies = array();
+		foreach ( $policies as $feature => $feature_info ) {
+			$this->policies[ $feature ] = new Policy(
+				$feature,
+				$feature_info
+			);
+		}
 
 		return $this->policies;
 	}
