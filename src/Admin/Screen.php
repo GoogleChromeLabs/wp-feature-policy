@@ -161,11 +161,19 @@ class Screen {
 			<?php
 			foreach ( $choices as $value => $label ) {
 				?>
-				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $origin, $value ); ?>><?php echo esc_html( $label ); ?></option>
+				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $origin, $value ); ?>>
+					<?php echo esc_html( $label ); ?>
+					<?php if ( $value === $policy->default_origin ) : ?>
+						<?php esc_html_e( '(default)', 'feature-policy' ); ?>
+					<?php endif; ?>
+				</option>
 				<?php
 			}
 			?>
 		</select>
+		<?php if ( $origin !== $policy->default_origin ) : ?>
+			<?php esc_html_e( '(overridden)', 'feature-policy' ); ?>
+		<?php endif; ?>
 		<?php
 	}
 }
