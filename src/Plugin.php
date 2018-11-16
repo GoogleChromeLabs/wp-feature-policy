@@ -30,7 +30,7 @@ class Plugin {
 	 * The feature policies controller instance.
 	 *
 	 * @since 0.1.0
-	 * @var Screen
+	 * @var Policies
 	 */
 	protected $policies;
 
