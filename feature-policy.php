@@ -100,7 +100,16 @@ function _wp_feature_policy_display_composer_install_requirement() {
 	?>
 	<div class="notice notice-error">
 		<p>
-			<?php esc_html_e( 'The Feature Policy plugin appears to being run from source and requires `composer install` to complete the plugin\'s installation.', 'feature-policy' ); ?>
+			<?php
+			printf(
+				/* translators: %s is the composer install command */
+				esc_html__(
+					'The Feature Policy plugin appears to being run from source and requires %s to complete the plugin\'s installation.',
+					'feature-policy'
+				),
+				'<code>composer install</code>'
+			);
+			?>
 		</p>
 	</div>
 	<?php
