@@ -102,9 +102,9 @@ function _wp_feature_policy_display_composer_install_requirement() {
 		<p>
 			<?php
 			printf(
-				/* translators: %s is the composer install command */
+				/* translators: %s: the composer install command */
 				esc_html__(
-					'The Feature Policy plugin appears to being run from source and requires %s to complete the plugin\'s installation.',
+					'The Feature Policy plugin appears to being run from source and requires %s to complete its installation.',
 					'feature-policy'
 				),
 				'<code>composer install</code>'
