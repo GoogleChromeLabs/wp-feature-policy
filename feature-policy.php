@@ -36,9 +36,12 @@ function _wp_feature_policy_load() {
 		return;
 	}
 
-	if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-		require __DIR__ . '/vendor/autoload.php';
+	if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+		add_action( 'admin_notices', '_wp_feature_policy_display_composer_install_requirement' );
+		return;
 	}
+
+	require_once __DIR__ . '/vendor/autoload.php';
 
 	call_user_func( array( 'Google\\WP_Feature_Policy\\Plugin', 'load' ), __FILE__ );
 }
@@ -80,6 +83,30 @@ function _wp_feature_policy_display_wp_version_notice() {
 				__( 'Feature Policy requires at least WordPress version %1$s. Your site is currently running on WordPress %2$s.', 'feature-policy' ),
 				'4.7',
 				get_bloginfo( 'version' )
+			);
+			?>
+		</p>
+	</div>
+	<?php
+}
+
+/**
+ * Displays an admin notice about the need to run composer install.
+ *
+ * @since 0.1.0
+ */
+function _wp_feature_policy_display_composer_install_requirement() {
+	?>
+	<div class="notice notice-error">
+		<p>
+			<?php
+			printf(
+				/* translators: %s: the composer install command */
+				esc_html__(
+					'The Feature Policy plugin appears to being run from source and requires %s to complete its installation.',
+					'feature-policy'
+				),
+				'<code>composer install</code>'
 			);
 			?>
 		</p>
