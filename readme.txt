@@ -1,15 +1,10 @@
 === Feature Policy ===
 
-Plugin Name:       Feature Policy
-Plugin URI:        https://wordpress.org/plugins/feature-policy/
-Author:            Google
-Author URI:        https://opensource.google.com/
 Contributors:      google, westonruter, flixos90
 Requires at least: 4.7
 Tested up to:      5.0
 Requires PHP:      5.6
 Stable tag:        0.1.0
-Version:           0.1.0
 License:           GNU General Public License v2 (or later)
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Tags:              feature, policy

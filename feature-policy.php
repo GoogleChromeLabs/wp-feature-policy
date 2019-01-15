@@ -16,10 +16,9 @@
  * License:     GNU General Public License v2 (or later)
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: feature-policy
- * Tags:        feature, policy
  */
 
-/* This file must be parseable by PHP 5.2. */
+/* This file must be parsable by PHP 5.2. */
 
 /**
  * Loads the plugin.
