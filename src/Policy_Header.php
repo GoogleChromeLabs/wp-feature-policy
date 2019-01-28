@@ -2,9 +2,10 @@
 /**
  * Class Google\WP_Feature_Policy\Policy_Header
  *
- * @package Google\WP_Feature_Policy
- * @license GNU General Public License, version 2
- * @link    https://wordpress.org/plugins/feature-policy/
+ * @package   Google\WP_Feature_Policy
+ * @copyright 2019 Google LLC
+ * @license   GNU General Public License, version 2
+ * @link      https://wordpress.org/plugins/feature-policy/
  */
 
 namespace Google\WP_Feature_Policy;

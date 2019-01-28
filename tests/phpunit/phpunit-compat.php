@@ -2,9 +2,10 @@
 /**
  * Compatibility with PHPUnit < 6.0.
  *
- * @package Google\WP_Feature_Policy
- * @license GNU General Public License, version 2
- * @link    https://wordpress.org/plugins/feature-policy/
+ * @package   Google\WP_Feature_Policy
+ * @copyright 2019 Google LLC
+ * @license   GNU General Public License, version 2
+ * @link      https://wordpress.org/plugins/feature-policy/
  */
 
 if ( class_exists( 'PHPUnit_Framework_TestCase' ) && ! class_exists( 'PHPUnit\Framework\TestCase' ) ) {
