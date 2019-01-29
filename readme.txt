@@ -13,7 +13,13 @@ WordPress plugin for managing feature policy headers.
 
 == Description ==
 
-TODO.
+As [noted on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy):
+
+> Feature Policy provides a mechanism to explicitly declare what functionality is used (or not used), throughout your website. This allows you to lock in best practices, even as the codebase evolves over time — as well as to more safely compose third-party content — by limiting which features are available.
+>
+> With Feature Policy, you opt-in to a set of "policies" for the browser to enforce on specific features used throughout a website. These policies restrict what APIs the site can access or modify the browser's default behavior for certain features.
+
+This plugin provides an API for sending the `Feature-Policy` response headers, as well as an admin interface for deciding which feature policies to apply.
 
 == Installation ==
 

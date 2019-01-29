@@ -46,7 +46,6 @@ use GitHub pull requests for this purpose. Consult
 [GitHub Help](https://help.github.com/articles/about-pull-requests/) for more
 information on using pull requests.
 
-
 ## Providing Translations
 
 When providing translations...
