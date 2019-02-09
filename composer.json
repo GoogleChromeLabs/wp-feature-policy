@@ -17,7 +17,7 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/westonruter/wp-feature-policy/issues"
+    "issues": "https://github.com/GoogleChromeLabs/wp-feature-policy/issues"
   },
   "autoload": {
     "psr-4": {
