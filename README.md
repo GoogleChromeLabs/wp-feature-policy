@@ -1,8 +1,8 @@
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/feature-policy.svg?maxAge=2592000)](https://wordpress.org/plugins/feature-policy/)
 [![WordPress](https://img.shields.io/wordpress/v/feature-policy.svg?maxAge=2592000)](https://wordpress.org/plugins/feature-policy/)
 [![Build Status](https://api.travis-ci.org/GoogleChromeLabs/wp-feature-policy.png?branch=master)](https://travis-ci.org/GoogleChromeLabs/wp-feature-policy)
-[![Latest Stable Version](https://poser.pugx.org/GoogleChromeLabs/wp-feature-policy/version)](https://packagist.org/packages/GoogleChromeLabs/wp-feature-policy)
-[![License](https://poser.pugx.org/GoogleChromeLabs/wp-feature-policy/license)](https://packagist.org/packages/GoogleChromeLabs/wp-feature-policy)
+[![Latest Stable Version](https://poser.pugx.org/google/wp-feature-policy/version)](https://packagist.org/packages/google/wp-feature-policy)
+[![License](https://poser.pugx.org/google/wp-feature-policy/license)](https://packagist.org/packages/google/wp-feature-policy)
 
 # Feature Policy
 
