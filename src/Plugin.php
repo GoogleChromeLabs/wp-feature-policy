@@ -87,7 +87,7 @@ class Plugin {
 		add_action(
 			'admin_menu',
 			function() {
-				$admin_screen = new Admin\Screen( $this->policies, $this->policies_setting );
+				$admin_screen = new Admin\Settings_Screen( $this->policies, $this->policies_setting );
 				$admin_screen->register_menu();
 			}
 		);
@@ -141,7 +141,7 @@ class Plugin {
 	 */
 	public function grant_feature_policy_cap( array $allcaps ) {
 		if ( isset( $allcaps['manage_options'] ) ) {
-			$allcaps[ Admin\Screen::CAPABILITY ] = $allcaps['manage_options'];
+			$allcaps[ Admin\Settings_Screen::CAPABILITY ] = $allcaps['manage_options'];
 		}
 
 		return $allcaps;

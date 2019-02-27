@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Google\WP_Feature_Policy\Admin\Screen
+ * Class Google\WP_Feature_Policy\Admin\Settings_Screen
  *
  * @package   Google\WP_Feature_Policy
  * @copyright 2019 Google LLC
@@ -15,11 +15,11 @@ use Google\WP_Feature_Policy\Policy;
 use Google\WP_Feature_Policy\Policies_Setting;
 
 /**
- * Class for the admin screen to control feature policies.
+ * Class for the admin settings screen to control feature policies.
  *
  * @since 0.1.0
  */
-class Screen {
+class Settings_Screen {
 
 	/**
 	 * The admin page slug.
