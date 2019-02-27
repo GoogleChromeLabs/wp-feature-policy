@@ -21,7 +21,8 @@ use Google\WP_Feature_Policy\Policies_Setting;
  */
 class Screen {
 
-	const PAGE_SLUG = 'feature_policy';
+	const PAGE_SLUG  = 'feature_policy';
+	const CAPABILITY = 'manage_options';
 
 	/**
 	 * Feature policies controller instance.
@@ -64,7 +65,7 @@ class Screen {
 				$hook_suffix = add_options_page(
 					__( 'Feature Policy', 'feature-policy' ),
 					__( 'Feature Policy', 'feature-policy' ),
-					'manage_options',
+					self::CAPABILITY,
 					self::PAGE_SLUG,
 					array( $this, 'render' )
 				);
