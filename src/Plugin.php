@@ -50,14 +50,6 @@ class Plugin {
 	protected $policy_headers;
 
 	/**
-	 * The admin screen instance.
-	 *
-	 * @since 0.1.0
-	 * @var Admin\Screen
-	 */
-	protected $admin_screen;
-
-	/**
 	 * Main instance of the plugin.
 	 *
 	 * @since 0.1.0
@@ -78,7 +70,6 @@ class Plugin {
 		$this->policies         = new Policies();
 		$this->policies_setting = new Policies_Setting();
 		$this->policy_headers   = new Policy_Headers( $this->policies, $this->policies_setting );
-		$this->admin_screen     = new Admin\Screen( $this->policies, $this->policies_setting );
 	}
 
 	/**
@@ -89,7 +80,14 @@ class Plugin {
 	public function register() {
 		$this->policies_setting->register();
 		$this->policy_headers->register();
-		$this->admin_screen->register();
+
+		add_action(
+			'admin_menu',
+			function() {
+				$admin_screen = new Admin\Screen( $this->policies, $this->policies_setting );
+				$admin_screen->register_menu();
+			}
+		);
 	}
 
 	/**

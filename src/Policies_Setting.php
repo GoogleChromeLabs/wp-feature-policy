@@ -29,7 +29,7 @@ class Policies_Setting {
 			'init',
 			function() {
 				register_setting(
-					Admin\Screen::PAGE_SLUG,
+					Admin\Screen::SLUG,
 					self::OPTION_NAME,
 					array(
 						'type'              => 'object',

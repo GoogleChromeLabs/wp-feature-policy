@@ -21,7 +21,28 @@ use Google\WP_Feature_Policy\Policies_Setting;
  */
 class Screen {
 
-	const PAGE_SLUG  = 'feature_policy';
+	/**
+	 * The admin page slug.
+	 *
+	 * @since 0.1.0
+	 * @var string
+	 */
+	const SLUG = 'feature_policy';
+
+	/**
+	 * The admin page parent slug.
+	 *
+	 * @since 0.1.0
+	 * @var string
+	 */
+	const PARENT_SLUG = 'options-general.php';
+
+	/**
+	 * The capability required to access the admin screen.
+	 *
+	 * @since 0.1.0
+	 * @var string
+	 */
 	const CAPABILITY = 'manage_options';
 
 	/**
@@ -54,30 +75,25 @@ class Screen {
 	}
 
 	/**
-	 * Registers the admin screen with WordPress.
+	 * Registers the menu item for the admin screen.
 	 *
 	 * @since 0.1.0
 	 */
-	public function register() {
+	public function register_menu() {
+		$hook_suffix = add_submenu_page(
+			self::PARENT_SLUG,
+			__( 'Feature Policy', 'feature-policy' ),
+			__( 'Feature Policy', 'feature-policy' ),
+			self::CAPABILITY,
+			self::SLUG,
+			array( $this, 'render' )
+		);
 		add_action(
-			'admin_menu',
+			"load-{$hook_suffix}",
 			function() {
-				$hook_suffix = add_options_page(
-					__( 'Feature Policy', 'feature-policy' ),
-					__( 'Feature Policy', 'feature-policy' ),
-					self::CAPABILITY,
-					self::PAGE_SLUG,
-					array( $this, 'render' )
-				);
-				add_action(
-					"load-{$hook_suffix}",
-					function() {
-						$this->add_settings_ui();
-					}
-				);
+				$this->add_settings_ui();
 			}
 		);
-
 	}
 
 	/**
@@ -91,8 +107,8 @@ class Screen {
 			<h1><?php esc_html_e( 'Feature Policy', 'feature-policy' ); ?></h1>
 
 			<form action="options.php" method="post" novalidate="novalidate">
-				<?php settings_fields( self::PAGE_SLUG ); ?>
-				<?php do_settings_sections( self::PAGE_SLUG ); ?>
+				<?php settings_fields( self::SLUG ); ?>
+				<?php do_settings_sections( self::SLUG ); ?>
 				<?php submit_button(); ?>
 			</form>
 		</div>
@@ -105,7 +121,7 @@ class Screen {
 	 * @since 0.1.0
 	 */
 	protected function add_settings_ui() {
-		add_settings_section( 'default', '', null, self::PAGE_SLUG );
+		add_settings_section( 'default', '', null, self::SLUG );
 
 		$policies = $this->policies->get_all();
 		$option   = $this->policies_setting->get();
@@ -118,7 +134,7 @@ class Screen {
 					$origin = isset( $option[ $policy->name ] ) ? $option[ $policy->name ][0] : $policy->default_origin;
 					$this->render_field( $policy, $origin );
 				},
-				self::PAGE_SLUG,
+				self::SLUG,
 				'default',
 				array( 'label_for' => $policy->name )
 			);
