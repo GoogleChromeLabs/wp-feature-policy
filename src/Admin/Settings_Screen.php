@@ -10,8 +10,8 @@
 
 namespace Google\WP_Feature_Policy\Admin;
 
-use Google\WP_Feature_Policy\Policies;
-use Google\WP_Feature_Policy\Policy;
+use Google\WP_Feature_Policy\Features;
+use Google\WP_Feature_Policy\Feature;
 use Google\WP_Feature_Policy\Policies_Setting;
 
 /**
@@ -46,12 +46,12 @@ class Settings_Screen {
 	const CAPABILITY = 'manage_feature_policy';
 
 	/**
-	 * Feature policies controller instance.
+	 * Features controller instance.
 	 *
 	 * @since 0.1.0
-	 * @var Policies
+	 * @var Features
 	 */
-	protected $policies;
+	protected $features;
 
 	/**
 	 * Feature policies setting instance.
@@ -66,11 +66,11 @@ class Settings_Screen {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Policies         $policies         Feature policies controller instance.
+	 * @param Features         $features         Features controller instance.
 	 * @param Policies_Setting $policies_setting Feature policies setting instance.
 	 */
-	public function __construct( Policies $policies, Policies_Setting $policies_setting ) {
-		$this->policies         = $policies;
+	public function __construct( Features $features, Policies_Setting $policies_setting ) {
+		$this->features         = $features;
 		$this->policies_setting = $policies_setting;
 	}
 
@@ -147,20 +147,20 @@ class Settings_Screen {
 	protected function add_settings_ui() {
 		add_settings_section( 'default', '', null, self::SLUG );
 
-		$policies = $this->policies->get_all();
+		$features = $this->features->get_all();
 		$option   = $this->policies_setting->get();
 
-		foreach ( $policies as $policy ) {
+		foreach ( $features as $feature ) {
 			add_settings_field(
-				$policy->name,
-				$policy->title,
-				function( $args ) use ( $policy, $option ) {
-					$origin = isset( $option[ $policy->name ] ) ? $option[ $policy->name ][0] : $policy->default_origin;
-					$this->render_field( $policy, $origin );
+				$feature->name,
+				$feature->title,
+				function( $args ) use ( $feature, $option ) {
+					$origin = isset( $option[ $feature->name ] ) ? $option[ $feature->name ][0] : $feature->default_origin;
+					$this->render_field( $feature, $origin );
 				},
 				self::SLUG,
 				'default',
-				array( 'label_for' => $policy->name )
+				array( 'label_for' => $feature->name )
 			);
 		}
 	}
@@ -170,24 +170,24 @@ class Settings_Screen {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Policy $policy Feature policy definition.
-	 * @param string $origin Origin set for the feature policy.
+	 * @param Feature $feature Feature definition.
+	 * @param string  $origin  Origin set for the feature policy.
 	 */
-	protected function render_field( Policy $policy, $origin ) {
+	protected function render_field( Feature $feature, $origin ) {
 		$choices = array(
-			Policy::ORIGIN_ANY  => __( 'Any', 'feature-policy' ),
-			Policy::ORIGIN_SELF => __( 'Self', 'feature-policy' ),
-			Policy::ORIGIN_NONE => __( 'None', 'feature-policy' ),
+			Feature::ORIGIN_ANY  => __( 'Any', 'feature-policy' ),
+			Feature::ORIGIN_SELF => __( 'Self', 'feature-policy' ),
+			Feature::ORIGIN_NONE => __( 'None', 'feature-policy' ),
 		);
 
 		?>
-		<select id="<?php echo esc_attr( $policy->name ); ?>" name="<?php echo esc_attr( Policies_Setting::OPTION_NAME . '[' . $policy->name . '][]' ); ?>">
+		<select id="<?php echo esc_attr( $feature->name ); ?>" name="<?php echo esc_attr( Policies_Setting::OPTION_NAME . '[' . $feature->name . '][]' ); ?>">
 			<?php
 			foreach ( $choices as $value => $label ) {
 				?>
 				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $origin, $value ); ?>>
 					<?php echo esc_html( $label ); ?>
-					<?php if ( $value === $policy->default_origin ) : ?>
+					<?php if ( $value === $feature->default_origin ) : ?>
 						<?php esc_html_e( '(default)', 'feature-policy' ); ?>
 					<?php endif; ?>
 				</option>

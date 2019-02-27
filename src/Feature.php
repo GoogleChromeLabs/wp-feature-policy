@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Google\WP_Feature_Policy\Policy
+ * Class Google\WP_Feature_Policy\Feature
  *
  * @package   Google\WP_Feature_Policy
  * @copyright 2019 Google LLC
@@ -11,18 +11,18 @@
 namespace Google\WP_Feature_Policy;
 
 /**
- * Class representing a feature policy.
+ * Class representing a feature.
  *
  * @since 0.1.0
  */
-class Policy {
+class Feature {
 
 	const ORIGIN_ANY  = '*';
 	const ORIGIN_SELF = 'self';
 	const ORIGIN_NONE = 'none';
 
 	/**
-	 * Feature policy name.
+	 * Feature name.
 	 *
 	 * @since 0.1.0
 	 * @var string
@@ -40,15 +40,15 @@ class Policy {
 	/**
 	 * Constructor.
 	 *
-	 * Sets the feature policy name and arguments.
+	 * Sets the feature name and arguments.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $name Feature policy name.
+	 * @param string $name Feature name.
 	 * @param array  $args {
 	 *     Feature policy arguments.
 	 *
-	 *     @type string $title          User-facing feature policy title.
+	 *     @type string $title          User-facing feature title.
 	 *     @type string $default_origin Default origin for the feature policy. Must be either "*" or "self".
 	 *                                  Default is "*".
 	 * }
@@ -95,11 +95,11 @@ class Policy {
 	}
 
 	/**
-	 * Sets the feature policy arguments.
+	 * Sets the feature arguments.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array $args List of feature policy arguments. See {@see Policy::__construct()} for a list of supported
+	 * @param array $args List of feature arguments. See {@see Feature::__construct()} for a list of supported
 	 *                    arguments.
 	 */
 	protected function set_args( array $args ) {

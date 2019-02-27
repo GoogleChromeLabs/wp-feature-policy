@@ -18,12 +18,12 @@ namespace Google\WP_Feature_Policy;
 class Policy_Header {
 
 	/**
-	 * Policy that the header represents.
+	 * Feature that the header represents.
 	 *
 	 * @since 0.1.0
-	 * @var Policy
+	 * @var Feature
 	 */
-	protected $policy;
+	protected $feature;
 
 	/**
 	 * Origins for the header.
@@ -38,11 +38,11 @@ class Policy_Header {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Policy $policy  Policy that the header represents.
-	 * @param array  $origins Origins for the header.
+	 * @param Feature $feature Feature that the header represents.
+	 * @param array   $origins Origins for the header.
 	 */
-	public function __construct( Policy $policy, array $origins ) {
-		$this->policy  = $policy;
+	public function __construct( Feature $feature, array $origins ) {
+		$this->feature = $feature;
 		$this->origins = $origins;
 	}
 
@@ -59,7 +59,7 @@ class Policy_Header {
 		}
 
 		$value = $this->get_value();
-		if ( empty( $this->origins ) || array( $this->policy->default_origin ) === $this->origins ) {
+		if ( empty( $this->origins ) || array( $this->feature->default_origin ) === $this->origins ) {
 			return false;
 		}
 
@@ -74,7 +74,7 @@ class Policy_Header {
 	 * @return string Value for the HTTP header.
 	 */
 	protected function get_value() {
-		$value = $this->policy->name;
+		$value = $this->feature->name;
 
 		foreach ( $this->origins as $origin ) {
 			if ( Policy::ORIGIN_SELF === $origin || Policy::ORIGIN_NONE === $origin ) {

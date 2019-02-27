@@ -18,12 +18,12 @@ namespace Google\WP_Feature_Policy;
 class Policy_Headers {
 
 	/**
-	 * Policies controller instance.
+	 * Features controller instance.
 	 *
 	 * @since 0.1.0
-	 * @var Policies
+	 * @var Features
 	 */
-	protected $policies;
+	protected $features;
 
 	/**
 	 * Feature policies setting instance.
@@ -38,11 +38,11 @@ class Policy_Headers {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Policies         $policies         Feature policies controller instance.
+	 * @param Features         $features         Features controller instance.
 	 * @param Policies_Setting $policies_setting Feature policies setting instance.
 	 */
-	public function __construct( Policies $policies, Policies_Setting $policies_setting ) {
-		$this->policies         = $policies;
+	public function __construct( Features $features, Policies_Setting $policies_setting ) {
+		$this->features         = $features;
 		$this->policies_setting = $policies_setting;
 	}
 
@@ -59,23 +59,23 @@ class Policy_Headers {
 	}
 
 	/**
-	 * Gets the headers for all enabled feature policies.
+	 * Gets the policy headers for all available features.
 	 *
 	 * @since 0.1.0
 	 *
 	 * @return array List of policy headers.
 	 */
 	protected function get_policy_headers() {
-		$policies = $this->policies->get_all();
+		$features = $this->features->get_all();
 		$option   = $this->policies_setting->get();
 
 		$headers = array();
 		foreach ( $option as $policy_slug => $policy_origins ) {
-			if ( ! isset( $policies[ $policy_slug ] ) ) {
+			if ( ! isset( $features[ $policy_slug ] ) ) {
 				continue;
 			}
 
-			$headers[] = new Policy_Header( $policies[ $policy_slug ], $policy_origins );
+			$headers[] = new Policy_Header( $features[ $policy_slug ], $policy_origins );
 		}
 
 		return $headers;

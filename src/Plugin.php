@@ -26,12 +26,12 @@ class Plugin {
 	protected $main_file;
 
 	/**
-	 * The feature policies controller instance.
+	 * The features controller instance.
 	 *
 	 * @since 0.1.0
-	 * @var Policies
+	 * @var Features
 	 */
-	protected $policies;
+	protected $features;
 
 	/**
 	 * The feature policies setting instance.
@@ -59,7 +59,7 @@ class Plugin {
 	public function __construct( $main_file ) {
 		$this->main_file = $main_file;
 
-		$this->policies         = new Policies();
+		$this->features         = new Features();
 		$this->policies_setting = new Policies_Setting();
 	}
 
@@ -79,7 +79,7 @@ class Plugin {
 		add_action(
 			'send_headers',
 			function() {
-				$policy_headers = new Policy_Headers( $this->policies, $this->policies_setting );
+				$policy_headers = new Policy_Headers( $this->features, $this->policies_setting );
 				$policy_headers->send_headers();
 			}
 		);
@@ -87,7 +87,7 @@ class Plugin {
 		add_action(
 			'admin_menu',
 			function() {
-				$admin_screen = new Admin\Settings_Screen( $this->policies, $this->policies_setting );
+				$admin_screen = new Admin\Settings_Screen( $this->features, $this->policies_setting );
 				$admin_screen->register_menu();
 			}
 		);
