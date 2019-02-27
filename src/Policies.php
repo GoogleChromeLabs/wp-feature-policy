@@ -57,118 +57,95 @@ class Policies {
 		}
 
 		$policies = array(
-			'accelerometer'        =>
-			array(
+			'accelerometer'        => array(
 				'title'          => __( 'Accelerometer', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'ambient-light-sensor' =>
-			array(
+			'ambient-light-sensor' => array(
 				'title'          => __( 'Ambient Light Sensor', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'autoplay'             =>
-			array(
+			'autoplay'             => array(
 				'title'          => __( 'Autoplay', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'camera'               =>
-			array(
+			'camera'               => array(
 				'title'          => __( 'Camera', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'document-domain'      =>
-			array(
+			'document-domain'      => array(
 				'title'          => __( 'document.domain', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'document-write'       =>
-			array(
+			'document-write'       => array(
 				'title'          => __( 'document.write()', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'encrypted-media'      =>
-			array(
+			'encrypted-media'      => array(
 				'title'          => __( 'Encrypted Media', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'fullscreen'           =>
-			array(
+			'fullscreen'           => array(
 				'title'          => __( 'Fullscreen', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'geolocation'          =>
-			array(
+			'geolocation'          => array(
 				'title'          => __( 'Geolocation', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'gyroscope'            =>
-			array(
+			'gyroscope'            => array(
 				'title'          => __( 'Gyroscope', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'layout-animations'    =>
-			array(
+			'layout-animations'    => array(
 				'title'          => __( 'Layout Animations', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'lazyload'             =>
-			array(
+			'lazyload'             => array(
 				'title'          => __( 'Lazy Loading', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'legacy-image-formats' =>
-			array(
+			'legacy-image-formats' => array(
 				'title'          => __( 'Legacy Image Formats', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'magnetometer'         =>
-			array(
+			'magnetometer'         => array(
 				'title'          => __( 'Magnetometer', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'microphone'           =>
-			array(
+			'microphone'           => array(
 				'title'          => __( 'Microphone', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'midi'                 =>
-			array(
+			'midi'                 => array(
 				'title'          => __( 'Midi', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'oversized-images'     =>
-			array(
+			'oversized-images'     => array(
 				'title'          => __( 'Oversized Images', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'payment'              =>
-			array(
+			'payment'              => array(
 				'title'          => __( 'Payment', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'picture-in-picture'   =>
-			array(
+			'picture-in-picture'   => array(
 				'title'          => __( 'Picture-in-Picture', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'speaker'              =>
-			array(
+			'speaker'              => array(
 				'title'          => __( 'Speaker', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
-			'sync-script'          =>
-			array(
+			'sync-script'          => array(
 				'title'          => __( 'Synchronous Scripts', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'sync-xhr'             =>
-			array(
+			'sync-xhr'             => array(
 				'title'          => __( 'Synchronous XHR', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'unoptimized-images'   =>
-			array(
+			'unoptimized-images'   => array(
 				'title'          => __( 'Unoptimized Images', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
@@ -176,18 +153,15 @@ class Policies {
 				'title'          => __( 'Unsized Media', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'usb'                  =>
-			array(
+			'usb'                  => array(
 				'title'          => __( 'USB', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'vertical-scroll'      =>
-			array(
+			'vertical-scroll'      => array(
 				'title'          => __( 'Vertical Scroll', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_ANY,
 			),
-			'vr'                   =>
-			array(
+			'vr'                   => array(
 				'title'          => __( 'VR', 'feature-policy' ),
 				'default_origin' => Policy::ORIGIN_SELF,
 			),
