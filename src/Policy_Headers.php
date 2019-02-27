@@ -26,14 +26,24 @@ class Policy_Headers {
 	protected $policies;
 
 	/**
+	 * Feature policies setting instance.
+	 *
+	 * @since 0.1.0
+	 * @var Policies_Setting
+	 */
+	protected $policies_setting;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Policies $policies Policies controller instance.
+	 * @param Policies         $policies         Feature policies controller instance.
+	 * @param Policies_Setting $policies_setting Feature policies setting instance.
 	 */
-	public function __construct( Policies $policies ) {
-		$this->policies = $policies;
+	public function __construct( Policies $policies, Policies_Setting $policies_setting ) {
+		$this->policies         = $policies;
+		$this->policies_setting = $policies_setting;
 	}
 
 	/**
@@ -62,7 +72,7 @@ class Policy_Headers {
 	 */
 	protected function get_policy_headers() {
 		$policies = $this->policies->get_all();
-		$option   = $this->policies->get_option();
+		$option   = $this->policies_setting->get();
 
 		$headers = array();
 		foreach ( $option as $policy_slug => $policy_origins ) {

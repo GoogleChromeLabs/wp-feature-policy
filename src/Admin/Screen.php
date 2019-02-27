@@ -12,6 +12,7 @@ namespace Google\WP_Feature_Policy\Admin;
 
 use Google\WP_Feature_Policy\Policies;
 use Google\WP_Feature_Policy\Policy;
+use Google\WP_Feature_Policy\Policies_Setting;
 
 /**
  * Class for the admin screen to control feature policies.
@@ -20,7 +21,7 @@ use Google\WP_Feature_Policy\Policy;
  */
 class Screen {
 
-	const PAGE_SLUG = 'feature_policies';
+	const PAGE_SLUG = 'feature_policy';
 
 	/**
 	 * Feature policies controller instance.
@@ -31,16 +32,24 @@ class Screen {
 	protected $policies;
 
 	/**
-	 * Constructor.
+	 * Feature policies setting instance.
 	 *
-	 * Sets the feature policies controller instance.
+	 * @since 0.1.0
+	 * @var Policies_Setting
+	 */
+	protected $policies_setting;
+
+	/**
+	 * Constructor.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Policies $policies Feature policies controller instance.
+	 * @param Policies         $policies         Feature policies controller instance.
+	 * @param Policies_Setting $policies_setting Feature policies setting instance.
 	 */
-	public function __construct( Policies $policies ) {
-		$this->policies = $policies;
+	public function __construct( Policies $policies, Policies_Setting $policies_setting ) {
+		$this->policies         = $policies;
+		$this->policies_setting = $policies_setting;
 	}
 
 	/**
@@ -49,35 +58,12 @@ class Screen {
 	 * @since 0.1.0
 	 */
 	public function register() {
-		// TODO: Consider creating `Policies_Option` class to handle this call, also to possibly add REST API support.
-		add_action(
-			'admin_init',
-			function() {
-				register_setting(
-					self::PAGE_SLUG,
-					Policies::OPTION_NAME,
-					array(
-						'type'              => 'object',
-						'description'       => __( 'Enabled feature policies and their origins.', 'feature-policy' ),
-						'sanitize_callback' => function( $value ) {
-							// TODO: This is probably too basic.
-							if ( ! is_array( $value ) ) {
-								return array();
-							}
-							return $value;
-						},
-						'default'           => array(),
-					)
-				);
-			}
-		);
-
 		add_action(
 			'admin_menu',
 			function() {
 				$hook_suffix = add_options_page(
-					__( 'Feature Policies', 'feature-policy' ),
-					__( 'Feature Policies', 'feature-policy' ),
+					__( 'Feature Policy', 'feature-policy' ),
+					__( 'Feature Policy', 'feature-policy' ),
 					'manage_options',
 					self::PAGE_SLUG,
 					array( $this, 'render' )
@@ -101,7 +87,7 @@ class Screen {
 	public function render() {
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Feature Policies', 'feature-policy' ); ?></h1>
+			<h1><?php esc_html_e( 'Feature Policy', 'feature-policy' ); ?></h1>
 
 			<form action="options.php" method="post" novalidate="novalidate">
 				<?php settings_fields( self::PAGE_SLUG ); ?>
@@ -121,7 +107,7 @@ class Screen {
 		add_settings_section( 'default', '', null, self::PAGE_SLUG );
 
 		$policies = $this->policies->get_all();
-		$option   = $this->policies->get_option();
+		$option   = $this->policies_setting->get();
 
 		foreach ( $policies as $policy ) {
 			add_settings_field(
@@ -154,7 +140,7 @@ class Screen {
 		);
 
 		?>
-		<select id="<?php echo esc_attr( $policy->name ); ?>" name="<?php echo esc_attr( Policies::OPTION_NAME . '[' . $policy->name . '][]' ); ?>">
+		<select id="<?php echo esc_attr( $policy->name ); ?>" name="<?php echo esc_attr( Policies_Setting::OPTION_NAME . '[' . $policy->name . '][]' ); ?>">
 			<?php
 			foreach ( $choices as $value => $label ) {
 				?>

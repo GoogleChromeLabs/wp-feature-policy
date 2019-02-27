@@ -10,8 +10,6 @@
 
 namespace Google\WP_Feature_Policy;
 
-use Google\WP_Feature_Policy\Admin\Screen;
-
 /**
  * Main class for the plugin.
  *
@@ -36,6 +34,14 @@ class Plugin {
 	protected $policies;
 
 	/**
+	 * The feature policies setting instance.
+	 *
+	 * @since 0.1.0
+	 * @var Policies_Setting
+	 */
+	protected $policies_setting;
+
+	/**
 	 * The feature policy headers controller instance.
 	 *
 	 * @since 0.1.0
@@ -47,7 +53,7 @@ class Plugin {
 	 * The admin screen instance.
 	 *
 	 * @since 0.1.0
-	 * @var Screen
+	 * @var Admin\Screen
 	 */
 	protected $admin_screen;
 
@@ -69,9 +75,10 @@ class Plugin {
 	public function __construct( $main_file ) {
 		$this->main_file = $main_file;
 
-		$this->policies       = new Policies();
-		$this->policy_headers = new Policy_Headers( $this->policies );
-		$this->admin_screen   = new Screen( $this->policies );
+		$this->policies         = new Policies();
+		$this->policies_setting = new Policies_Setting();
+		$this->policy_headers   = new Policy_Headers( $this->policies, $this->policies_setting );
+		$this->admin_screen     = new Admin\Screen( $this->policies, $this->policies_setting );
 	}
 
 	/**
@@ -80,6 +87,7 @@ class Plugin {
 	 * @since 0.1.0
 	 */
 	public function register() {
+		$this->policies_setting->register();
 		$this->policy_headers->register();
 		$this->admin_screen->register();
 	}
