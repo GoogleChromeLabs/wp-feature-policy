@@ -71,6 +71,11 @@ class Plugin {
 	public function register() {
 		$this->policies_setting->register();
 
+		add_filter(
+			'user_has_cap',
+			array( $this, 'grant_feature_policy_cap' )
+		);
+
 		add_action(
 			'send_headers',
 			function() {
@@ -121,6 +126,25 @@ class Plugin {
 	 */
 	public function url( $relative_path = '/' ) {
 		return plugin_dir_url( $this->main_file ) . ltrim( $relative_path, '/' );
+	}
+
+	/**
+	 * Dynamically grants the 'manage_feature_policy' capability based on 'manage_options'.
+	 *
+	 * This method is hooked into the `user_has_cap` filter and can be unhooked and replaced with custom functionality
+	 * if needed.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param array $allcaps Associative array of $cap => $grant pairs.
+	 * @return array Filtered $allcaps array.
+	 */
+	public function grant_feature_policy_cap( array $allcaps ) {
+		if ( isset( $allcaps['manage_options'] ) ) {
+			$allcaps[ Admin\Screen::CAPABILITY ] = $allcaps['manage_options'];
+		}
+
+		return $allcaps;
 	}
 
 	/**

@@ -43,7 +43,7 @@ class Screen {
 	 * @since 0.1.0
 	 * @var string
 	 */
-	const CAPABILITY = 'manage_options';
+	const CAPABILITY = 'manage_feature_policy';
 
 	/**
 	 * Feature policies controller instance.
