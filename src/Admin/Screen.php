@@ -196,9 +196,6 @@ class Screen {
 			}
 			?>
 		</select>
-		<?php if ( $origin !== $policy->default_origin ) : ?>
-			<?php esc_html_e( '(overridden)', 'feature-policy' ); ?>
-		<?php endif; ?>
 		<?php
 	}
 }
