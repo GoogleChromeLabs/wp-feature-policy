@@ -129,6 +129,17 @@ class Plugin {
 	}
 
 	/**
+	 * Gets the URL to the plugin's settings screen.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string Settings screen URL.
+	 */
+	public function settings_screen_url() {
+		return add_query_arg( 'page', Admin\Settings_Screen::SLUG, admin_url( Admin\Settings_Screen::PARENT_SLUG ) );
+	}
+
+	/**
 	 * Dynamically grants the 'manage_feature_policy' capability based on 'manage_options'.
 	 *
 	 * This method is hooked into the `user_has_cap` filter and can be unhooked and replaced with custom functionality
