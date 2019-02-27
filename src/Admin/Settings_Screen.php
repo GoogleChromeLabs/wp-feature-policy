@@ -103,8 +103,32 @@ class Settings_Screen {
 	 */
 	public function render() {
 		?>
+		<style type="text/css">
+			.external-link > .dashicons {
+				font-size: 16px;
+				text-decoration: none;
+			}
+
+			.external-link:hover > .dashicons,
+			.external-link:focus > .dashicons {
+				text-decoration: none;
+			}
+		</style>
 		<div class="wrap">
 			<h1><?php esc_html_e( 'Feature Policy', 'feature-policy' ); ?></h1>
+
+			<p>
+				<?php esc_html_e( 'Feature Policy grants you control over how certain browser APIs and web features act on your site.', 'feature-policy' ); ?>
+				<?php
+				printf(
+					'<a class="external-link" href="%1$s" target="_blank">%2$s<span class="screen-reader-text"> %3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
+					esc_url( _x( 'https://developers.google.com/web/updates/2018/06/feature-policy', 'learn more link', 'feature-policy' ) ),
+					esc_html__( 'Learn more about Feature Policy', 'feature-policy' ),
+					/* translators: accessibility text */
+					esc_html__( '(opens in a new tab)', 'feature-policy' )
+				);
+				?>
+			</p>
 
 			<form action="options.php" method="post" novalidate="novalidate">
 				<?php settings_fields( self::SLUG ); ?>
@@ -171,9 +195,6 @@ class Settings_Screen {
 			}
 			?>
 		</select>
-		<?php if ( $origin !== $policy->default_origin ) : ?>
-			<?php esc_html_e( '(overridden)', 'feature-policy' ); ?>
-		<?php endif; ?>
 		<?php
 	}
 }
