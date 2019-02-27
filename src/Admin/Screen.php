@@ -120,7 +120,7 @@ class Screen {
 	protected function add_settings_ui() {
 		add_settings_section( 'default', '', null, self::PAGE_SLUG );
 
-		$policies = $this->policies->get_policies();
+		$policies = $this->policies->get_all();
 		foreach ( $policies as $policy ) {
 			add_settings_field(
 				$policy->name,

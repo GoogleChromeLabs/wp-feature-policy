@@ -28,30 +28,13 @@ class Policies {
 	protected $policies = array();
 
 	/**
-	 * Registers feature policies integration with WordPress.
-	 *
-	 * @since 0.1.0
-	 */
-	public function register() {
-		add_action(
-			'send_headers',
-			function() {
-				$headers = $this->get_policy_headers();
-				foreach ( $headers as $header ) {
-					$header->send();
-				}
-			}
-		);
-	}
-
-	/**
-	 * Gets the available feature policies definitions.
+	 * Gets all the available feature policies.
 	 *
 	 * @since 0.1.0
 	 *
 	 * @return array Associative array of $policy_name => $policy_instance pairs.
 	 */
-	public function get_policies() {
+	public function get_all() {
 		if ( ! empty( $this->policies ) ) {
 			return $this->policies;
 		}
@@ -176,28 +159,5 @@ class Policies {
 		}
 
 		return $this->policies;
-	}
-
-	/**
-	 * Gets the headers for all enabled feature policies.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return array List of policy headers.
-	 */
-	protected function get_policy_headers() {
-		$options  = array_filter( (array) get_option( self::OPTION_NAME, array() ) );
-		$policies = $this->get_policies();
-
-		$headers = array();
-		foreach ( $options as $policy_slug => $policy_origins ) {
-			if ( ! isset( $policies[ $policy_slug ] ) ) {
-				continue;
-			}
-
-			$headers[] = new Policy_Header( $policies[ $policy_slug ], $policy_origins );
-		}
-
-		return $headers;
 	}
 }

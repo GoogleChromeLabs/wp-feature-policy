@@ -36,6 +36,14 @@ class Plugin {
 	protected $policies;
 
 	/**
+	 * The feature policy headers controller instance.
+	 *
+	 * @since 0.1.0
+	 * @var Policy_Headers
+	 */
+	protected $policy_headers;
+
+	/**
 	 * The admin screen instance.
 	 *
 	 * @since 0.1.0
@@ -61,8 +69,9 @@ class Plugin {
 	public function __construct( $main_file ) {
 		$this->main_file = $main_file;
 
-		$this->policies     = new Policies();
-		$this->admin_screen = new Screen( $this->policies );
+		$this->policies       = new Policies();
+		$this->policy_headers = new Policy_Headers( $this->policies );
+		$this->admin_screen   = new Screen( $this->policies );
 	}
 
 	/**
@@ -71,7 +80,7 @@ class Plugin {
 	 * @since 0.1.0
 	 */
 	public function register() {
-		$this->policies->register();
+		$this->policy_headers->register();
 		$this->admin_screen->register();
 	}
 
