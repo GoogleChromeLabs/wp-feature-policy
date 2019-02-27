@@ -42,14 +42,6 @@ class Plugin {
 	protected $policies_setting;
 
 	/**
-	 * The feature policy headers controller instance.
-	 *
-	 * @since 0.1.0
-	 * @var Policy_Headers
-	 */
-	protected $policy_headers;
-
-	/**
 	 * Main instance of the plugin.
 	 *
 	 * @since 0.1.0
@@ -69,7 +61,6 @@ class Plugin {
 
 		$this->policies         = new Policies();
 		$this->policies_setting = new Policies_Setting();
-		$this->policy_headers   = new Policy_Headers( $this->policies, $this->policies_setting );
 	}
 
 	/**
@@ -79,7 +70,14 @@ class Plugin {
 	 */
 	public function register() {
 		$this->policies_setting->register();
-		$this->policy_headers->register();
+
+		add_action(
+			'send_headers',
+			function() {
+				$policy_headers = new Policy_Headers( $this->policies, $this->policies_setting );
+				$policy_headers->send_headers();
+			}
+		);
 
 		add_action(
 			'admin_menu',

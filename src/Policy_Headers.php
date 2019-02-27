@@ -47,20 +47,15 @@ class Policy_Headers {
 	}
 
 	/**
-	 * Registers feature policies integration with WordPress.
+	 * Sends feature policy headers.
 	 *
 	 * @since 0.1.0
 	 */
-	public function register() {
-		add_action(
-			'send_headers',
-			function() {
-				$headers = $this->get_policy_headers();
-				foreach ( $headers as $header ) {
-					$header->send();
-				}
-			}
-		);
+	public function send_headers() {
+		$headers = $this->get_policy_headers();
+		foreach ( $headers as $header ) {
+			$header->send();
+		}
 	}
 
 	/**
