@@ -121,21 +121,19 @@ class Screen {
 		add_settings_section( 'default', '', null, self::PAGE_SLUG );
 
 		$policies = $this->policies->get_all();
+		$option   = $this->policies->get_option();
+
 		foreach ( $policies as $policy ) {
 			add_settings_field(
 				$policy->name,
 				$policy->title,
-				function( $args ) {
-					$this->render_field( $args['policy'] );
+				function( $args ) use ( $policy, $option ) {
+					$origin = isset( $option[ $policy->name ] ) ? $option[ $policy->name ][0] : $policy->default_origin;
+					$this->render_field( $policy, $origin );
 				},
 				self::PAGE_SLUG,
 				'default',
-				array(
-					// WordPress core.
-					'label_for' => $policy->name,
-					// Custom.
-					'policy'    => $policy,
-				)
+				array( 'label_for' => $policy->name )
 			);
 		}
 	}
@@ -146,11 +144,9 @@ class Screen {
 	 * @since 0.1.0
 	 *
 	 * @param Policy $policy Feature policy definition.
+	 * @param string $origin Origin set for the feature policy.
 	 */
-	protected function render_field( Policy $policy ) {
-		$option = get_option( Policies::OPTION_NAME );
-		$origin = isset( $option[ $policy->name ] ) ? $option[ $policy->name ][0] : $policy->default_origin;
-
+	protected function render_field( Policy $policy, $origin ) {
 		$choices = array(
 			Policy::ORIGIN_ANY  => __( 'Any', 'feature-policy' ),
 			Policy::ORIGIN_SELF => __( 'Self', 'feature-policy' ),

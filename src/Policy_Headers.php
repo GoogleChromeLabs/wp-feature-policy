@@ -61,11 +61,11 @@ class Policy_Headers {
 	 * @return array List of policy headers.
 	 */
 	protected function get_policy_headers() {
-		$options  = array_filter( (array) get_option( Policies::OPTION_NAME, array() ) );
 		$policies = $this->policies->get_all();
+		$option   = $this->policies->get_option();
 
 		$headers = array();
-		foreach ( $options as $policy_slug => $policy_origins ) {
+		foreach ( $option as $policy_slug => $policy_origins ) {
 			if ( ! isset( $policies[ $policy_slug ] ) ) {
 				continue;
 			}

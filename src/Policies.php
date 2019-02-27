@@ -160,4 +160,15 @@ class Policies {
 
 		return $this->policies;
 	}
+
+	/**
+	 * Gets the value list from the Feature Policy option.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return array Associative array of $policy_name => $policy_origins pairs.
+	 */
+	public function get_option() {
+		return array_filter( (array) get_option( self::OPTION_NAME, array() ) );
+	}
 }
