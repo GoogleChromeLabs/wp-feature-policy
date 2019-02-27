@@ -115,7 +115,15 @@ class Settings_Screen {
 			}
 		</style>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Feature Policy', 'feature-policy' ); ?></h1>
+			<h1 class="wp-heading-inline">
+				<?php esc_html_e( 'Feature Policy', 'feature-policy' ); ?>
+			</h1>
+			<?php
+			if ( class_exists( 'Google\WP_Reporting_API\Plugin' ) ) {
+				echo ' <a href="' . esc_url( add_query_arg( 'type', 'feature-policy-violation', \Google\WP_Reporting_API\Plugin::instance()->reports_screen_url() ) ) . '" class="page-title-action">' . esc_html__( 'View Violation Reports', 'feature-policy' ) . '</a>';
+			}
+			?>
+			<hr class="wp-header-end">
 
 			<p>
 				<?php esc_html_e( 'Feature Policy grants you control over how certain browser APIs and web features act on your site.', 'feature-policy' ); ?>
