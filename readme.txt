@@ -13,13 +13,19 @@ WordPress plugin for managing feature policy headers.
 
 == Description ==
 
-As [noted on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy):
+As [noted on the Google Developers blog](https://developers.google.com/web/updates/2018/06/feature-policy):
 
-> Feature Policy provides a mechanism to explicitly declare what functionality is used (or not used), throughout your website. This allows you to lock in best practices, even as the codebase evolves over time — as well as to more safely compose third-party content — by limiting which features are available.
+> Feature Policy allows web developers to selectively enable, disable, and modify the behavior of certain APIs and web features in the browser. **It's like CSP but instead of controlling security, it controls features!**
 >
-> With Feature Policy, you opt-in to a set of "policies" for the browser to enforce on specific features used throughout a website. These policies restrict what APIs the site can access or modify the browser's default behavior for certain features.
+> The feature policies themselves are little opt-in agreements between developer and browser that can help foster our goals of building (and maintaining) high quality web apps.
 
-This plugin provides an API for sending the `Feature-Policy` response headers, as well as an admin interface for deciding which feature policies to apply.
+This plugin provides an API for sending the `Feature-Policy` response headers, as well as an admin interface for deciding which policy to apply for each feature.
+
+As the Feature Policy specification is still evolving and at an early stage, the plugin reflects that and is currently an experimental prototype, to demonstrate how Feature Policy can be used in WordPress.
+
+= Did you know? =
+
+The Feature Policy specification will integrate with the new Reporting API specification. There is a [WordPress plugin for that specification](https://wordpress.org/plugins/reporting-api/) as well.
 
 == Installation ==
 
@@ -28,11 +34,9 @@ This plugin provides an API for sending the `Feature-Policy` response headers, a
 
 == Frequently Asked Questions ==
 
-TODO.
-
 = Where should I submit my support request? =
 
-For regular support requests, please use the [wordpress.org support forums](https://wordpress.org/support/plugin/feature-policy). If you have a technical issue with the plugin where you already have more insight on how to fix it, you can also [open an issue on Github instead](https://github.com/GoogleChromeLabs/wp-feature-policy/issues).
+Note that this is an experimental plugin, so support is limited and volunteer-driven. For regular support requests, please use the [wordpress.org support forums](https://wordpress.org/support/plugin/feature-policy). If you have a technical issue with the plugin where you already have more insight on how to fix it, you can also [open an issue on Github instead](https://github.com/GoogleChromeLabs/wp-feature-policy/issues).
 
 = How can I contribute to the plugin? =
 
@@ -42,7 +46,8 @@ You can also contribute to the plugin by translating it. Simply visit [translate
 
 == Screenshots ==
 
-TODO.
+1. Settings screen to control policies for all available features
+2. Settings screen with a link to Feature Policy reports (with the Reporting API plugin active)
 
 == Changelog ==
 
