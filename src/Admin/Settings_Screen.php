@@ -82,7 +82,7 @@ class Settings_Screen {
 	public function register_menu() {
 		$hook_suffix = add_submenu_page(
 			self::PARENT_SLUG,
-			__( 'Feature Policy', 'feature-policy' ),
+			__( 'Feature Policy Settings', 'feature-policy' ),
 			__( 'Feature Policy', 'feature-policy' ),
 			self::CAPABILITY,
 			self::SLUG,
@@ -116,7 +116,7 @@ class Settings_Screen {
 		</style>
 		<div class="wrap">
 			<h1 class="wp-heading-inline">
-				<?php esc_html_e( 'Feature Policy', 'feature-policy' ); ?>
+				<?php esc_html_e( 'Feature Policy Settings', 'feature-policy' ); ?>
 			</h1>
 			<?php
 			if ( class_exists( 'Google\WP_Reporting_API\Plugin' ) ) {
