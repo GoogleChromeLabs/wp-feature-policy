@@ -27,7 +27,7 @@ class Settings_Screen {
 	 * @since 0.1.0
 	 * @var string
 	 */
-	const SLUG = 'feature_policy';
+	const SLUG = 'feature_policy_settings';
 
 	/**
 	 * The admin page parent slug.
