@@ -26,19 +26,19 @@
  *
  * @since 0.1.0
  */
-function _wp_feature_policy_load() {
+function feature_policy_load() {
 	if ( version_compare( phpversion(), '5.6', '<' ) ) {
-		add_action( 'admin_notices', '_wp_feature_policy_display_php_version_notice' );
+		add_action( 'admin_notices', 'feature_policy_display_php_version_notice' );
 		return;
 	}
 
 	if ( version_compare( get_bloginfo( 'version' ), '4.7', '<' ) ) {
-		add_action( 'admin_notices', '_wp_feature_policy_display_wp_version_notice' );
+		add_action( 'admin_notices', 'feature_policy_display_wp_version_notice' );
 		return;
 	}
 
 	if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-		add_action( 'admin_notices', '_wp_feature_policy_display_composer_install_requirement' );
+		add_action( 'admin_notices', 'feature_policy_display_composer_install_requirement' );
 		return;
 	}
 
@@ -52,7 +52,7 @@ function _wp_feature_policy_load() {
  *
  * @since 0.1.0
  */
-function _wp_feature_policy_display_php_version_notice() {
+function feature_policy_display_php_version_notice() {
 	?>
 	<div class="notice notice-error">
 		<p>
@@ -74,7 +74,7 @@ function _wp_feature_policy_display_php_version_notice() {
  *
  * @since 0.1.0
  */
-function _wp_feature_policy_display_wp_version_notice() {
+function feature_policy_display_wp_version_notice() {
 	?>
 	<div class="notice notice-error">
 		<p>
@@ -96,7 +96,7 @@ function _wp_feature_policy_display_wp_version_notice() {
  *
  * @since 0.1.0
  */
-function _wp_feature_policy_display_composer_install_requirement() {
+function feature_policy_display_composer_install_requirement() {
 	?>
 	<div class="notice notice-error">
 		<p>
@@ -115,4 +115,4 @@ function _wp_feature_policy_display_composer_install_requirement() {
 	<?php
 }
 
-_wp_feature_policy_load();
+feature_policy_load();
