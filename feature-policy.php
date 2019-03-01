@@ -25,6 +25,7 @@
  * Loads the plugin.
  *
  * @since 0.1.0
+ * @access private
  */
 function feature_policy_load() {
 	if ( version_compare( phpversion(), '5.6', '<' ) ) {
@@ -37,12 +38,14 @@ function feature_policy_load() {
 		return;
 	}
 
-	if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-		add_action( 'admin_notices', 'feature_policy_display_composer_install_requirement' );
-		return;
-	}
+	if ( ! class_exists( 'Google\\WP_Feature_Policy\\Plugin' ) ) {
+		if ( ! file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+			add_action( 'admin_notices', 'feature_policy_display_composer_install_requirement' );
+			return;
+		}
 
-	require_once __DIR__ . '/vendor/autoload.php';
+		require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+	}
 
 	call_user_func( array( 'Google\\WP_Feature_Policy\\Plugin', 'load' ), __FILE__ );
 }
@@ -51,6 +54,7 @@ function feature_policy_load() {
  * Displays an admin notice about an unmet PHP version requirement.
  *
  * @since 0.1.0
+ * @access private
  */
 function feature_policy_display_php_version_notice() {
 	?>
@@ -73,6 +77,7 @@ function feature_policy_display_php_version_notice() {
  * Displays an admin notice about an unmet WordPress version requirement.
  *
  * @since 0.1.0
+ * @access private
  */
 function feature_policy_display_wp_version_notice() {
 	?>
@@ -92,9 +97,10 @@ function feature_policy_display_wp_version_notice() {
 }
 
 /**
- * Displays an admin notice about the need to run composer install.
+ * Displays an admin notice about the need to run `composer install`.
  *
  * @since 0.1.0
+ * @access private
  */
 function feature_policy_display_composer_install_requirement() {
 	?>
@@ -103,10 +109,7 @@ function feature_policy_display_composer_install_requirement() {
 			<?php
 			printf(
 				/* translators: %s: the composer install command */
-				esc_html__(
-					'The Feature Policy plugin appears to being run from source and requires %s to complete its installation.',
-					'feature-policy'
-				),
+				esc_html__( 'The Feature Policy plugin appears to being run from source and requires %s to complete its installation.', 'feature-policy' ),
 				'<code>composer install</code>'
 			);
 			?>
