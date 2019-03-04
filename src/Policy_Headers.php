@@ -52,20 +52,6 @@ class Policy_Headers {
 	 * @since 0.1.0
 	 */
 	public function send_headers() {
-		$headers = $this->get_policy_headers();
-		foreach ( $headers as $header ) {
-			$header->send();
-		}
-	}
-
-	/**
-	 * Gets the policy headers for all available features.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return array List of policy headers.
-	 */
-	protected function get_policy_headers() {
 		$features = $this->features->get_all();
 		$option   = $this->policies_setting->get();
 
@@ -75,9 +61,29 @@ class Policy_Headers {
 				continue;
 			}
 
-			$headers[] = new Policy_Header( $features[ $policy_slug ], $policy_origins );
+			if ( empty( $policy_origins ) || array( $features[ $policy_slug ]->default_origin ) === $policy_origins ) {
+				continue;
+			}
+
+			$policy_header = $features[ $policy_slug ]->name;
+			foreach ( $policy_origins as $origin ) {
+				if ( Feature::ORIGIN_SELF === $origin || Feature::ORIGIN_NONE === $origin ) {
+					$policy_header .= " '{$origin}'";
+					continue;
+				}
+
+				$policy_header .= " {$origin}";
+			}
+
+			$headers[] = $policy_header;
 		}
 
-		return $headers;
+		if ( empty( $headers ) ) {
+			return;
+		}
+
+		$value = implode( '; ', $headers );
+
+		header( "Feature-Policy: {$value}" );
 	}
 }
