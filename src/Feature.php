@@ -30,7 +30,7 @@ class Feature {
 	protected $name = '';
 
 	/**
-	 * Feature policy arguments.
+	 * Feature arguments.
 	 *
 	 * @since 0.1.0
 	 * @var array
@@ -46,7 +46,7 @@ class Feature {
 	 *
 	 * @param string $name Feature name.
 	 * @param array  $args {
-	 *     Feature policy arguments.
+	 *     Feature arguments.
 	 *
 	 *     @type string $title          User-facing feature title.
 	 *     @type string $default_origin Default origin for the feature policy. Must be either "*" or "self".
