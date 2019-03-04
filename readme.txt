@@ -34,6 +34,10 @@ The Feature Policy specification will integrate with the new Reporting API speci
 
 == Frequently Asked Questions ==
 
+= Which browsers support the Feature Policy specification? =
+
+The Feature Policy standard is quite bleeding-edge, so support is currently still limited. The latest versions of Chrome, Safari, Opera and several mobile browsers support it. For detailed support stats, please check [caniuse.com/#feat=feature-policy](https://caniuse.com/#feat=feature-policy).
+
 = Where should I submit my support request? =
 
 Note that this is an experimental plugin, so support is limited and volunteer-driven. For regular support requests, please use the [wordpress.org support forums](https://wordpress.org/support/plugin/feature-policy). If you have a technical issue with the plugin where you already have more insight on how to fix it, you can also [open an issue on Github instead](https://github.com/GoogleChromeLabs/wp-feature-policy/issues).
