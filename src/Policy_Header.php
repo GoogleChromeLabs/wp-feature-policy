@@ -64,6 +64,8 @@ class Policy_Header {
 		}
 
 		header( "Feature-Policy: {$value}", false );
+
+		return true;
 	}
 
 	/**
@@ -77,7 +79,7 @@ class Policy_Header {
 		$value = $this->feature->name;
 
 		foreach ( $this->origins as $origin ) {
-			if ( Policy::ORIGIN_SELF === $origin || Policy::ORIGIN_NONE === $origin ) {
+			if ( Feature::ORIGIN_SELF === $origin || Feature::ORIGIN_NONE === $origin ) {
 				$value .= " '{$origin}'";
 				continue;
 			}
