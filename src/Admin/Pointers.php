@@ -10,10 +10,6 @@
 
 namespace Google\WP_Feature_Policy\Admin;
 
-use Google\WP_Feature_Policy\Features;
-use Google\WP_Feature_Policy\Feature;
-use Google\WP_Feature_Policy\Policies_Setting;
-
 /**
  * Class for controlling admin pointers.
  *
