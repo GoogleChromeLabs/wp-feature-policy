@@ -1,6 +1,6 @@
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/feature-policy.svg?maxAge=2592000)](https://wordpress.org/plugins/feature-policy/)
 [![WordPress](https://img.shields.io/wordpress/v/feature-policy.svg?maxAge=2592000)](https://wordpress.org/plugins/feature-policy/)
-[![Build Status](https://api.travis-ci.org/GoogleChromeLabs/wp-feature-policy.png?branch=master)](https://travis-ci.org/GoogleChromeLabs/wp-feature-policy)
+[![Build Status](https://api.travis-ci.org/GoogleChromeLabs/wp-feature-policy.png?branch=main)](https://travis-ci.org/GoogleChromeLabs/wp-feature-policy)
 
 # Feature Policy
 
@@ -31,7 +31,7 @@ The Feature Policy specification will integrate with the new Reporting API speci
 
 ## Contributing
 
-Any kind of contributions to Feature Policy are welcome. Please [read the contributing guidelines](https://github.com/GoogleChromeLabs/wp-feature-policy/blob/master/CONTRIBUTING.md) to get started.
+Any kind of contributions to Feature Policy are welcome. Please [read the contributing guidelines](https://github.com/GoogleChromeLabs/wp-feature-policy/blob/main/CONTRIBUTING.md) to get started.
 
 ## Further Resources
 
